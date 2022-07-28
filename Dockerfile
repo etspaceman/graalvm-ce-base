@@ -1,9 +1,10 @@
 FROM ghcr.io/graalvm/graalvm-ce:ol8-java11-22.2.0 as build
 RUN gu install native-image
 
+COPY ./x86_64-linux-musl-native.tgz ./x86_64-linux-musl-native.tgz
+
 RUN mkdir /musl && \
-    curl -L -o musl.tar.gz https://more.musl.cc/10.2.1/x86_64-linux-musl/x86_64-linux-musl-native.tgz && \
-    tar -xvzf musl.tar.gz -C /musl --strip-components 1 && \
+    tar -xvzf x86_64-linux-musl-native.tgz -C /musl --strip-components 1 && \
     cp /usr/lib/gcc/x86_64-redhat-linux/8/libstdc++.a /musl/lib/
 
 ENV CC=/musl/bin/gcc
