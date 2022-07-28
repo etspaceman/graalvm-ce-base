@@ -18,4 +18,4 @@ RUN curl -L -o zlib.tar.gz https://zlib.net/zlib-1.2.12.tar.gz && \
 ENV PATH="$PATH:/musl/bin"
 
 RUN microdnf install xz && \
-    curl -sL -o - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar xJ &&
+    curl -sL -o - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar xJ
